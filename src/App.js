@@ -12,13 +12,15 @@ import login from './pages/login';
 function App() {
   return (
     <div className="App">
-    <Router>
-    <Navbar/>
-      <Switch>
-        <Route exact path='/' component={home}/>
-        <Route path='/login' component={login}/>
-      </Switch>
-    </Router>
+      <Router>
+        <Navbar />
+        <div className="container">
+          <Switch>
+            <Route exact path="/" component={home} />
+            <Route path="/login" component={login} />
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
