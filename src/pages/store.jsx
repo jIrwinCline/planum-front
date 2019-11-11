@@ -10,7 +10,6 @@ export class store extends Component {
     componentDidMount(){
         axios.get('/posts')
         .then(res => {
-            console.log(res.data)
             this.setState({
                 posts: res.data
             })
@@ -20,7 +19,7 @@ export class store extends Component {
 
     render() {
         let recentPostsMarkup = this.state.posts ? (
-            this.state.posts.map(post => <p> <Post post={post}/></p>)
+            this.state.posts.map(post => <Post key={post.postId} post={post}/>)
         ) : <p>...Loading</p>;
         return (
         <Grid container spacing={10}>

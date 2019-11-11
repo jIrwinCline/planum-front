@@ -29,7 +29,7 @@ export class Post extends Component {
           <a href={link}>
             <Card className={classes.card}>
               <CardMedia image={images} title="Product Image" className={classes.image}/>
-              <CardContent class={classes.content}>
+              <CardContent className={classes.content}>
                 <Typography variant="h5" color="primary">{name}</Typography>
                 <Typography variant="body2" color="textSecondary">
                   ${price}
