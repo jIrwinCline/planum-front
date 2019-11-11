@@ -10,8 +10,9 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
     card: {
-        display: 'flex'
-    }
+        display: 'flex',
+        marginBottom: 20,
+    },
 }
 
 export class Post extends Component {
@@ -22,7 +23,7 @@ export class Post extends Component {
             <Card>
               <CardMedia image={images} title="Product Image" />
               <CardContent>
-                <Typography variant="h5">{name}</Typography>
+                <Typography variant="h5" color="primary">{name}</Typography>
                 <Typography variant="body2" color="textSecondary">
                   ${price}
                 </Typography>
