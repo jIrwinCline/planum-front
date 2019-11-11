@@ -26,6 +26,11 @@ const styles = {
   },
   button: {
     marginTop: 20
+  },
+  customError: {
+    color: 'red',
+    fontSixe: '0.8rem',
+    marginTop: 10
   }
 };
 
@@ -110,6 +115,11 @@ export class login extends Component {
               onChange={this.handleChange}
               fullWidth
             />
+            {errors.general && (
+              <Typography variant="body2" className={classes.customError}>
+                {errors.general}
+              </Typography>
+            )}
             <Button
               type="submit"
               variant="contained"
