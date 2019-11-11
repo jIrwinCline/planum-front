@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = {
   form: {
@@ -25,12 +26,16 @@ const styles = {
     margin: '10px auto 10px auto'
   },
   button: {
-    marginTop: 20
+    marginTop: 20,
+    postition: 'relative'
   },
   customError: {
     color: 'red',
     fontSixe: '0.8rem',
     marginTop: 10
+  },
+  progress: {
+    position: 'absolute'
   }
 };
 
@@ -111,7 +116,7 @@ export class login extends Component {
               className={classes.textField}
               helperText={errors.password}
               error={errors.password ? true : false}
-              value={this.state.email}
+              value={this.state.password}
               onChange={this.handleChange}
               fullWidth
             />
@@ -127,6 +132,9 @@ export class login extends Component {
               className={classes.button}
             >
               Login
+              {loading && (
+                <CircularProgress size={30} className={classes.progress} />
+              )}
             </Button>
           </form>
         </Grid>
