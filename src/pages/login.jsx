@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import withStyles from '@material-ui/core/styles/withStyles';
+import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import AppIcon from '../images/planumIcon.png';
 import axios from 'axios';
@@ -11,10 +11,33 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const styles = (theme) => ({
-  ...theme.spreadIt
-})
-
+const styles =   {
+  form: {
+    textAlign: "center"
+  },
+  image: {
+    margin: "20px auto 20px auto",
+    width: "50px"
+  },
+  pageTitle: {
+    margin: "10px auto 10px auto"
+  },
+  textField: {
+    margin: "10px auto 10px auto"
+  },
+  button: {
+    marginTop: 20,
+    postition: "relative"
+  },
+  customError: {
+    color: "red",
+    fontSixe: "0.8rem",
+    marginTop: 10
+  },
+  progress: {
+    position: "absolute"
+  }
+}
 
 
 export class login extends Component {
