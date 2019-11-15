@@ -3,7 +3,7 @@ import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import Post from '../components/Post';
 
-export class store extends Component {
+export class products extends Component {
     state = {
         posts: null
     }
@@ -35,4 +35,4 @@ export class store extends Component {
     }
     }
 
-export default store;
+export default products;
