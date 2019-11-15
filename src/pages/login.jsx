@@ -145,4 +145,4 @@ const mapActionsToProps = {
   loginUser
 }
 
-export default connect(mapStateToProps, mapStateToProps)(withStyles(styles)(login));
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(login));
