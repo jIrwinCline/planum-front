@@ -28,7 +28,7 @@ class DeletePost extends Component {
     this.setState({ open: true });
   };
   handleClose = () => {
-    this.setState({ open: true });
+    this.setState({ open: false });
   };
   deletePost = () => {
     this.props.deletePost(this.props.postId)
@@ -58,7 +58,7 @@ class DeletePost extends Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.deleteScream} color="secondary">
+            <Button onClick={this.deletePost} color="secondary">
               Delete
             </Button>
           </DialogActions>
@@ -74,4 +74,4 @@ DeletePost.propTypes = {
     postId: PropTypes.string.isRequired
 }
 
-export default connect(null, { DeletePost })(withStyles(styles)(DeletePost))
+export default connect(null, { deletePost })(withStyles(styles)(DeletePost))

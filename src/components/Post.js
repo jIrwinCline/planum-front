@@ -51,19 +51,25 @@ export class Post extends Component {
           <DeletePost postId={postId} />
         ) : null;
         return (
-          <a href={link}>
-            <Card className={classes.card}>
-              <CardMedia image={images} title="Product Image" className={classes.image}/>
-              <CardContent className={classes.content}>
-                <Typography variant="h5" color="primary">{name}</Typography>
-                { deleteButton }
-                <Typography variant="body2" color="textSecondary">
-                  ${price}
+          <Card className={classes.card}>
+            <CardMedia
+              image={images}
+              title="Product Image"
+              className={classes.image}
+            />
+            <CardContent className={classes.content}>
+              <a href={link}>
+                <Typography variant="h5" color="primary">
+                  {name}
                 </Typography>
-                <Typography variant="body1">{info}</Typography>
-              </CardContent>
-            </Card>
-          </a>
+              </a>
+              {deleteButton}
+              <Typography variant="body2" color="textSecondary">
+                ${price}
+              </Typography>
+              <Typography variant="body1">{info}</Typography>
+            </CardContent>
+          </Card>
         );
     }
 }
