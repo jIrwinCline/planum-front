@@ -1,5 +1,5 @@
 import { SET_POSTS } from '../types';
-import { LOADING_DATA } from '../types';
+import { LOADING_DATA, DELETE_POST } from '../types';
 
 const initialState = {
     posts: [],
@@ -19,6 +19,12 @@ export default function(state = initialState, action){
                 ...state,
                 posts: action.payload,
                 loading: false
+            }
+        case DELETE_POST:
+            let index = state.posts.findIndex(post => post.postId === action.payload);
+            state.posts.splice(index, 1);
+            return {
+                ...state
             }
         default:
             return state

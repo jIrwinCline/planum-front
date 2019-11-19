@@ -22,7 +22,7 @@ export class Navbar extends Component {
                   <MyButton tip="Post a product">
                     <AddIcon color="primary" />
                   </MyButton>
-                  <Link to='/'>
+                  <Link to='/products'>
                   <MyButton tip="Home">
                     <HomeIcon color="primary" />
                   </MyButton>
