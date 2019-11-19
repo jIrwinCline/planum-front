@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import { Link, Redirect } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; 
+import DeletePost from './DeletePost';
 
 //MUI Stuff
 import Card from "@material-ui/core/Card";
@@ -13,6 +14,7 @@ import { connect } from 'react-redux';
 
 const styles = {
     card: {
+        position: 'relative',
         display: 'flex',
         marginBottom: 20,
     },
@@ -27,10 +29,27 @@ const styles = {
 
 export class Post extends Component {
     render() {
-        const { classes, post : { name, createdAt, images, itemCategory, postId, link, info, price, available, highEnd } } = this.props
+        const {
+          classes,
+          post: {
+            name,
+            createdAt,
+            images,
+            itemCategory,
+            postId,
+            link,
+            info,
+            price,
+            available,
+            highEnd
+          },
+          user: {
+            authenticated
+          }
+        } = this.props;
         const deleteButton = authenticated ? (
           <DeletePost postId={postId} />
-        ) : null
+        ) : null;
         return (
           <a href={link}>
             <Card className={classes.card}>

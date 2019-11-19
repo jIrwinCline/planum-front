@@ -1,4 +1,4 @@
-import { SET_POSTS, LOADING_DATA } from '../types';
+import { SET_POSTS, LOADING_DATA, DELETE_POST } from "../types";
 import axios from 'axios';
 
 export const getPosts = () => dispatch => {
@@ -16,4 +16,12 @@ export const getPosts = () => dispatch => {
                 payload: []
             })
         })
+}
+
+export const deletePost = (postId) => (dispatch) => {
+    axios.delete(`/post/${postId}`)
+        .then(() => {
+            dispatch({ type: DELETE_POST, payload: postId })
+        })
+        .catch(err => console.log(err))
 }
