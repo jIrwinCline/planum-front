@@ -18,14 +18,15 @@ export const getPosts = () => dispatch => {
         })
 }
 //POST PRODUCT
-export const postProduct = (newProduct) => {
+export const postProduct = (newPost) => (dispatch) => {
     dispatch({ type: LOADING_UI });
-    axios.post('/product', newProduct)
+    axios.post('/post', newPost)
         .then(res => {
             dispatch({
-                type: POST_SCREAM,
+                type: POST_PRODUCT,
                 payload: res.data
             })
+            console.log("success");
             dispatch({ type: CLEAR_ERRORS })
         })
         .catch(err => {
