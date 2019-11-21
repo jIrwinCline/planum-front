@@ -1,5 +1,5 @@
 import { SET_POSTS } from '../types';
-import { LOADING_DATA, DELETE_POST } from '../types';
+import { LOADING_DATA, DELETE_POST, POST_PRODUCT } from '../types';
 
 const initialState = {
     posts: [],
@@ -26,6 +26,14 @@ export default function(state = initialState, action){
             return {
                 ...state
             }
+        case POST_PRODUCT:
+            return [
+                ...state,
+                screams: [
+                    action.payload,
+                    ...state.posts
+                ]
+            ]
         default:
             return state
     }
