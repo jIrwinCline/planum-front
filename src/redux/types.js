@@ -12,3 +12,4 @@ export const LOADING_DATA = "LOADING_DATA";
 export const SET_POSTS = 'SET_POSTS';
 export const SET_POST = 'SET_POST';
 export const DELETE_POST = "DELETE_POST";
+export const POST_PRODUCT = 'POST_PRODUCT'
