@@ -69,6 +69,16 @@ const styles = {
   dialogPaper: {
     minHeight: "80vh",
     maxHeight: "80vh"
+  },
+  expandButton: {
+      position: 'absolute',
+      left: '90%',
+      bottom: '10%'
+  },
+  spinnerDiv: {
+      textAlign: 'center',
+      marginTop: 50,
+      marginBottom: 50
   }
 };
 
@@ -87,7 +97,9 @@ class PostDialog extends Component {
       const { classes, post: { postId, name, images, itemCategory, link, info, price, available, highend }, UI: { loading }} = this.props;
 
     const dialogMarkup = loading ? (
-      <CircularProgress size={200} />
+        <div className={classes.spinnerDiv}>
+          <CircularProgress size={200} thickness={2}/>
+      </div>
     ) : (
       <Grid container spacing={2}>
         <Grid item sm={4}>
