@@ -15,7 +15,7 @@ import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from "@material-ui/icons/Close";
 //REDUX
 import { connect } from "react-redux";
-import { postProduct } from "../redux/actions/dataActions";
+import { postProduct, clearErrors } from "../redux/actions/dataActions";
 
 const styles = {
   form: {
@@ -44,15 +44,17 @@ const styles = {
     position: "absolute"
   },
   submitButton: {
-      position: "relative"
+      position: "relative",
+      float: 'right',
+      marginTop: 10
   },
   progressSpinner: {
       position: 'absolute'
   },
   closeButton: {
       position: 'absolute',
-      left: '90%',
-      top: '10%'
+      left: '91%',
+      top: '6%'
   }
 };
 
@@ -69,8 +71,7 @@ class PostProduct extends Component {
             })
         }
         if(!nextProps.UI.errors && !nextProps.UI.loading){
-            this.setState({ name: ''});
-            this.handleClose();
+            this.setState({ name: "", open: false, errors: {} });
         }
     }
     handleOpen = () => {
@@ -249,12 +250,13 @@ class PostProduct extends Component {
 } // END CLASS
 
 PostProduct.propTypes = {
-    postProduct: PropTypes.func.isRequired,
-    UI: PropTypes.object.isRequired
-}
+  postProduct: PropTypes.func.isRequired,
+  UI: PropTypes.object.isRequired,
+  clearErrors: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state) => ({
     UI: state.UI
 })
 
-export default connect(mapStateToProps, { postProduct })(withStyles(styles)(PostProduct))
+export default connect(mapStateToProps, { postProduct, clearErrors })(withStyles(styles)(PostProduct))

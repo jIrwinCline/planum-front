@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Link, Redirect } from "react-router-dom";
 import PropTypes from 'prop-types'; 
 import DeletePost from './DeletePost';
+import PostDialog from './PostDialog';
 
 //MUI Stuff
 import Card from "@material-ui/core/Card";
@@ -23,7 +24,7 @@ const styles = {
     },
     content: {
       padding: 25,
-      objextFit: 'cover'
+      objectFit: 'cover'
     }
 }
 
@@ -68,6 +69,7 @@ export class Post extends Component {
                 ${price}
               </Typography>
               <Typography variant="body1">{info}</Typography>
+              <PostDialog postId={postId} />
             </CardContent>
           </Card>
         );
@@ -77,7 +79,7 @@ export class Post extends Component {
 Post.propTypes = {
   user: PropTypes.object.isRequired,
   post: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({

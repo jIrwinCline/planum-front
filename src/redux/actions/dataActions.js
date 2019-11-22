@@ -1,4 +1,14 @@
-import { SET_POSTS, LOADING_DATA, DELETE_POST, POST_PRODUCT, SET_ERRORS, CLEAR_ERRORS, LOADING_UI } from "../types";
+import {
+  SET_POSTS,
+  LOADING_DATA,
+  DELETE_POST,
+  POST_PRODUCT,
+  SET_ERRORS,
+  CLEAR_ERRORS,
+  LOADING_UI,
+  SET_POST,
+  STOP_LOADING_UI
+} from "../types";
 import axios from 'axios';
 //GET ALL PRODUCTS
 export const getPosts = () => dispatch => {
@@ -15,6 +25,21 @@ export const getPosts = () => dispatch => {
                 type: SET_POSTS,
                 payload: []
             })
+        })
+}
+// GET SCREAM
+export const getPost = (postId) => dispatch => {
+    dispatch({ type: LOADING_UI});
+    axios.get(`/post/${postId}`)
+        .then(res => {
+            dispatch({
+                type: SET_POST,
+                payload: res.data
+            });
+            dispatch({ type: STOP_LOADING_UI })
+        })
+        .catch(err => {
+            console.log(err)
         })
 }
 //POST PRODUCT
@@ -43,4 +68,8 @@ export const deletePost = (postId) => (dispatch) => {
             dispatch({ type: DELETE_POST, payload: postId })
         })
         .catch(err => console.log(err))
+}
+
+export const clearErrors = () => dispatch => {
+    dispatch({ type: CLEAR_ERRORS })
 }
