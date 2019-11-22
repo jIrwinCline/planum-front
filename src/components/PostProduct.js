@@ -68,19 +68,32 @@ class PostProduct extends Component {
                 errors: nextProps.UI.errors
             })
         }
+        if(!nextProps.UI.errors && !nextProps.UI.loading){
+            this.setState({ name: ''});
+            this.handleClose();
+        }
     }
     handleOpen = () => {
         this.setState({ open: true })
     }
     handleClose = () => {
-        this.setState({ open: false })
+        this.setState({ open: false, errors: {} })
     }
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.postProduct({ body: this.state.body })
+        this.props.postProduct({
+          name: this.state.name,
+          images: this.state.images,
+          link: this.state.link,
+          info: this.state.info,
+          price: this.state.price,
+          itemCategory: this.state.itemCategory,
+          available: this.state.available,
+          highEnd: this.state.highEnd
+        });
     }
     render(){
         const { errors } = this.state;
