@@ -94,9 +94,11 @@ class PostDialog extends Component {
           <img src={AppIcon} alt="Profile" className={classes.image} />
         </Grid>
         <Grid item direction="column" sm={5}>
-          <Typography component={Link} color="primary" variant="h5" to={link}>
+            <a href={link}>
+          <Typography color="primary" variant="h5">
             Buy Item
           </Typography>
+          </a>
           <Typography color="primary" variant="h5">
             {name}
           </Typography>
