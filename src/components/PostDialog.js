@@ -65,6 +65,10 @@ const styles = {
     position: "absolute",
     left: "91%",
     top: "6%"
+  },
+  dialogPaper: {
+    minHeight: "80vh",
+    maxHeight: "80vh"
   }
 };
 
@@ -83,24 +87,32 @@ class PostDialog extends Component {
       const { classes, post: { postId, name, images, itemCategory, link, info, price, available, highend }, UI: { loading }} = this.props;
 
     const dialogMarkup = loading ? (
-        <CircularProgress size={200}/>
-    ) : ( <Grid container spacing={16}>
-            <Grid item sm={5}>
-                <img src={AppIcon} alt='Profile' className={classes.image}/>
-            </Grid>
-            <Grid item sm={7}>
-                <Typography
-                component={Link}
-                color="primary"
-                variant="h5"
-                to={link}
-                >
-                    Buy Item
-                </Typography>
-                <hr className={classes.invisibleSeperator}/>
-            </Grid>
+      <CircularProgress size={200} />
+    ) : (
+      <Grid container spacing={2}>
+        <Grid item sm={4}>
+          <img src={AppIcon} alt="Profile" className={classes.image} />
         </Grid>
-    )
+        <Grid item direction="column" sm={5}>
+          <Typography component={Link} color="primary" variant="h5" to={link}>
+            Buy Item
+          </Typography>
+          <Typography color="primary" variant="h5">
+            {name}
+          </Typography>
+          <Typography color="primary" variant="h5">
+            {info}
+          </Typography>
+          <br/>
+          <Typography color="primary" variant="h5">
+            {price}
+          </Typography>
+        </Grid>
+        <Grid item sm={2}>
+          <hr className={classes.invisibleSeperator} />
+        </Grid>
+      </Grid>
+    );
     return (
         <Fragment>
             <MyButton onClick={this.handleOpen} tip="Expand Post" tipClassName={classes.expandButton}>
@@ -108,8 +120,10 @@ class PostDialog extends Component {
             </MyButton> 
             <Dialog open={this.state.open}
               onClose={this.handleClose}
+              classes={{paper: classes.dialogPaper }}
+              fullscreen={true}
               fullWidth
-              maxWidth="sm"
+              maxWidth="lg"
             >
               <MyButton
                 tip="close"
